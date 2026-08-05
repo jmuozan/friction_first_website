@@ -1,0 +1,48 @@
+% ============================================================
+% Cover / poster page (based on ref/cover.png)
+% ============================================================
+\thispagestyle{empty}
+
+\halftoneblock{14mm}{76mm}{92mm}{100mm}
+
+\begin{tikzpicture}[remember picture,overlay]
+
+  % ---- top info row: four fields, replacing the flyer's
+  %      "Personal invitation / Gallery / Concert / DJ Set" ----
+  \node[anchor=north west,text width=38mm,align=left,inner sep=0pt]
+    at ($(current page.north west)+(10mm,-14mm)$)
+    {\coverfield{Programació didàctica}{-}};
+  \node[anchor=north west,text width=26mm,align=left,inner sep=0pt]
+    at ($(current page.north west)+(52mm,-14mm)$)
+    {\coverfield{Especialitat}{-}};
+  \node[anchor=north west,text width=22mm,align=left,inner sep=0pt]
+    at ($(current page.north west)+(82mm,-14mm)$)
+    {\coverfield{Data}{-}};
+  \node[anchor=north west,text width=34mm,align=left,inner sep=0pt]
+    at ($(current page.north west)+(108mm,-14mm)$)
+    {\coverfield{Autor}{Jorge Muñoz Zanón}};
+
+  % ---- decorative number motif (academic year), like "1———06" ----
+  \node[anchor=west,color=ink,font=\titlefont\fontsize{30}{30}\selectfont]
+    (yA) at ($(current page.north west)+(10mm,-42mm)$) {24};
+  \node[anchor=east,color=ink,font=\titlefont\fontsize{30}{30}\selectfont]
+    (yB) at ($(current page.north west)+(138mm,-42mm)$) {25};
+  \draw[ink,line width=0.6pt] (yA.east) -- ++(3mm,0) -- (yB.west);
+
+  % ---- small caps kicker tag ----
+  \node[anchor=north west,color=ink,font=\bfseries\fontsize{9}{9}\selectfont]
+    at ($(current page.north west)+(10mm,-56mm)$) {T\,R\,E\,B\,A\,L\,L\;\;A\,C\,A\,D\,È\,M\,I\,C};
+
+  % ---- mega title, echoing the field left blank above ----
+  \node[anchor=north west,text width=128mm,align=left,inner sep=0pt,
+        color=ink,font=\titlefont\fontsize{34}{35}\selectfont]
+    at ($(current page.north west)+(10mm,-64mm)$)
+    {PROGRAMACIÓ\\[2mm]DIDÀCTICA};
+
+  % ---- footer ----
+  \node[anchor=south west,color=body,font=\small]
+    at ($(current page.south west)+(10mm,14mm)$) {Guia docent};
+  \node[anchor=south east,color=ink,font=\bfseries\small]
+    at ($(current page.south east)+(-10mm,14mm)$) {EN CONSTRUCCIÓ};
+
+\end{tikzpicture}
