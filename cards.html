@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards Friction First</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="index.html"><h1>Friction First</h1></a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="cards.html">How to play</a>
+        <a href="cards.html">The deck</a>
+        <a href="https://zenodo.org/records/21771895" target="_blank">Research</a>
+        <a href="#outreach">Outreach</a>
+        <a href="#contact">Contact</a>
+    </header>
+
+    <main class="builder">
+      <div class="controls">
+        <section>
+          <h2>Deck builder</h2>
+          <p class="hint">Choose how many of each card you need and set up the sheet for your printer. The preview updates as you go.</p>
+        </section>
+
+        <section>
+          <div id="card-types"></div>
+        </section>
+
+        <form id="settings" class="controls" onsubmit="return false">
+          <fieldset>
+            <legend>Card</legend>
+            <div class="row one">
+              <label>Size
+                <select name="cardPreset">
+                  <option value="70x100">70 × 100 mm (first prototype we did. Not recommended)</option>
+                  <option value="63x88">63 × 88 mm (poker)</option>
+                  <option value="70x120">70 × 120 mm (tarot)</option>
+                  <option value="44x68">44 × 68 mm (mini)</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </label>
+            </div>
+            <div class="row">
+              <label>Width (mm) <input type="number" name="cardW" min="10" step="0.5"></label>
+              <label>Height (mm) <input type="number" name="cardH" min="10" step="0.5"></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Paper</legend>
+            <div class="row">
+              <label>Sheet
+                <select name="paper">
+                  <option value="A4">A4</option>
+                  <option value="A3">A3</option>
+                  <option value="SRA4">SRA4</option>
+                  <option value="SRA3">SRA3</option>
+                  <option value="Letter">US Letter</option>
+                  <option value="Tabloid">Tabloid</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </label>
+              <label>Orientation
+                <select name="orientation">
+                  <option value="auto">Auto (fit most)</option>
+                  <option value="portrait">Portrait</option>
+                  <option value="landscape">Landscape</option>
+                </select>
+              </label>
+              <label>Width (mm) <input type="number" name="paperW" min="50" step="1"></label>
+              <label>Height (mm) <input type="number" name="paperH" min="50" step="1"></label>
+              <label>Printer margin (mm) <input type="number" name="margin" min="0" step="0.5"></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Bleed &amp; cutting</legend>
+            <div class="row">
+              <label>Bleed (mm) <input type="number" name="bleed" min="0" step="0.5"></label>
+              <label>Gutter (mm) <input type="number" name="gutter" min="0" step="0.5"></label>
+            </div>
+            <p class="hint">Gutter is the gap between cards. Bleed between cards is limited to half the gutter; use 0 gutter for single shared cuts.</p>
+            <div class="row one">
+              <label class="check"><input type="checkbox" name="marks"> Crop marks</label>
+            </div>
+            <div class="row">
+              <label>Mark length (mm) <input class="marks-only" type="number" name="markLen" min="1" step="0.5"></label>
+              <label>Distance from trim (mm) <input class="marks-only" type="number" name="markOffset" min="0" step="0.5"></label>
+              <label>Line weight (pt) <input class="marks-only" type="number" name="markWeight" min="0.05" step="0.05"></label>
+            </div>
+            <div class="row one">
+              <label class="check"><input type="checkbox" name="trimOutline"> Show trim outline (proofing only)</label>
+              <label class="check"><input type="checkbox" name="slug"> Sheet info line</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Sides</legend>
+            <div class="row">
+              <label>Pages
+                <select name="sides">
+                  <option value="interleaved">Front, back, front, back…</option>
+                  <option value="split">All fronts, then all backs</option>
+                  <option value="fronts">Fronts only</option>
+                  <option value="backs">Backs only</option>
+                </select>
+              </label>
+              <label>Duplex flip
+                <select name="flip">
+                  <option value="long">Long edge</option>
+                  <option value="short">Short edge</option>
+                </select>
+              </label>
+            </div>
+            <p class="hint">Backs are mirrored so each one lands behind its front. Match the flip to your printer's duplex setting.</p>
+          </fieldset>
+        </form>
+
+        <div class="actions">
+          <a id="download" class="btn" href="#" download="friction-first-deck.pdf" aria-disabled="true">Download PDF</a>
+          <button id="reset" class="btn ghost" type="button">Reset</button>
+        </div>
+        <p id="status" role="status"></p>
+      </div>
+
+      <div class="preview">
+        <iframe id="preview" title="PDF preview of the print sheets"></iframe>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/vendor/pdf-lib.min.js"></script>
+  <script src="js/vendor/fontkit.umd.min.js"></script>
+  <script src="js/cc-icons.js"></script>
+  <script src="js/deck.js"></script>
+</body>
+</html>
